@@ -1,0 +1,14 @@
+.Headers{
+    margin:-15px 0px 0 0;
+}
+.Operation {
+    display: inline-block;
+}
+
+.LabelA {
+    padding: 0 150px 0 15px;
+}
+
+.Disabled {
+    margin-left  : 10px;
+}
