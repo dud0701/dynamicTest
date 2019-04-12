@@ -3,26 +3,20 @@ import ReturnBody from './ReturnBody';
 import './Return.css';
 
 class Return extends Component {
-
-    state={
-        open:true
-    }
-
-    handlePanel = () => {
-        this.setState({
-            open : !this.state.open
-        });
-        console.log(this.state.open);
-    }
-
+    tempData = [
+        {id: 0, label: "String"},
+        {id: 1, label: "CSV"},
+        {id: 2, label: "File"},
+    ]
     render() {
+        const { tempData } = this;
         return( 
             <div className="return">
                 <div className="return-title" onClick={this.handlePanel}>
-                {this.state.open? "▼" : "▶"} Return Title
+                    <h1>Return value</h1>
                 </div>
                <div className="return-body">
-                    {this.state.open && <ReturnBody />}
+                    <ReturnBody tpData={tempData}/>
                 </div>
         </div>
         )

@@ -16,11 +16,10 @@
 .file_input_hidden {
     font-size: 45px;
     position: absolute;
-    display:inline;
     right: 0px;
     top: 0px;
     opacity: 0;
-    
+
     filter: alpha(opacity=0);
     -ms-filter: "alpha(opacity=0)";
     -khtml-opacity: 0;
@@ -31,6 +30,5 @@
     width: 75x;
     position: absolute;
     top: 0px;
-    display:inline;
    /*  border-style: solid; */
 }

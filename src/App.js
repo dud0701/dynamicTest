@@ -1,70 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import TextAreaFields from './components/TextAreaField';
-import InputTextField from './components/InputTextField';
-import DropdownSelect from './components/DropdownSelect';
 import PropertiesTemplate from './containers/PropertiesTemplate';
 import HeadTemplate from './containers/HeadTemplate';
 import BodyTemplate from './containers/BodyTemplate';
 import TempData from './components/data';
+/* import { Button } from 'reactstrap'; */
 
 class App extends Component {
   state = {
 
 
   }
-
-  Rossum = {
-    fields : [
-    {
-      placeholder: "Purpose of loan",
-      name:"name",
-      input_type:"dropdown",
-      required:true,
-      values:[
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7"
-      ]
-    },
-    {
-      placeholder:"Name",
-      name:"remaining_values",
-      input_type:"big_text",
-      required: true
-    },
-    {
-      placeholder:"email",
-      name:"email",
-      input_type:"text",
-      label_type:"checkbox",
-      /* input_type1:{
-        type: "text",
-        label_type:"checkbox",
-
-      } */
-      required: true
-    },
-    {
-      placeholder:"Prefered time to call you",
-      name:"contact_time",
-      input_type:"text",
-      label_type:"text",
-      required: true
-    },
-    {
-      placeholder:"test",
-      name:"radio_test", 
-      input_type:"text",
-      label_type:"radio",
-      required: true
-    }
-  ]
-}
 
 opType = [
   {id: 0, label: "Action"},
@@ -92,24 +38,46 @@ operation = {
   }
 }
 
-componentWillMount() {
+
+propertyDatas = [
+  {name:"api_key", input_type:"InputText", label_type:"LabelText", value:"", disabled:false, onChange:""},
+  {name:"pdf_file", input_type:"InputFile", label_type:"LabelText", value:"", disabled:false, onChange:""},
+  
+]
+
+advancedDatas = [
+  {name:"timeout", input_type:"InputNumber", label_type:"LabelCheck", value:"", disabled:false, onChange:""},
+]
+/* return table select 테스트용 data */
+selectData={
+  name:"Variable name",
+  input_type:"DropBoxTable",
+  label_type:"LabelText",
+  data:[
+    {IsArray:"false", VariableName:"aaa", GroupName:"aaa"},
+    {IsArray:"true", VariableName:"bbb", GroupName:"bbb"},
+    {IsArray:"false", VariableName:"ccc", GroupName:"ccc"},
+  ]
+}
+
+/* componentWillMount() {
   const datas = TempData[0]["argoslabs.api.rossum"];
   console.log(datas);
   console.log(datas.options);
-  console.log(datas.options.length);
+ // console.log(datas.options.length);
   for(let variable of datas.options) {   
     console.log(variable);
   }
  // console.log(Object.keys(data[0]).length);
  
   
-}
+} */
 
-  submitform = event => {
+/*   submitform = event => {
     const { fields } = this.state;
     console.log(this.state);
     event.preventDefault();
-  };
+  }; */
 
   _handleChange = event => {
     const { name, value } = event.target;
@@ -121,58 +89,15 @@ componentWillMount() {
 
   }
   render() {
-    const { fields } = this.Rossum;
-    const { _handleChange, opType, _handleChangeTypeOp, operations, operation } = this;
+    const { _handleChange, opType, _handleChangeTypeOp, operations, operation, propertyDatas,advancedDatas,selectData } = this;
 
     return (
       <PropertiesTemplate head={(
         <HeadTemplate opType={opType} onChangeTypeOp={_handleChangeTypeOp} operations={operations} operation={operation}/>
       )} body={(
-        <BodyTemplate operations/>
+        <BodyTemplate propertyDatas={propertyDatas} advancedDatas={advancedDatas} selectData={selectData}/>
       )}>   
       </PropertiesTemplate>
-    /*   <form onSubmit={this.submitform}>
-        {fields.map(form => {
-          if (form.input_type === "text") {
-            return (
-              <InputTextField
-                name={form.name}
-                placeholder={form.placeholder}
-                required={form.required}
-                key={"t" + form.name}
-                _handleChange={_handleChange}
-                label_type={form.label_type}
-              />
-            );
-          }
-
-          if(form.input_type === "big_text") {
-            return (
-              <TextAreaFields
-                name={form.name}
-                placeholder={form.placeholder}
-                required={form.required}
-                key={"b"+form.name}
-                _handleChange={_handleChange}
-              />
-            );
-          }
-
-          if(form.input_type === "dropdown") {
-            return (
-              <DropdownSelect
-                name={form.name}
-                placeholder={form.placeholder}
-                required={form.required}
-                val={form.values}
-                key={"d" + form.name}
-                _handleChange={_handleChange}
-              />
-            );
-          }
-        })}
-        <input type="submit"/>
-      </form> */
     );
   }
 }

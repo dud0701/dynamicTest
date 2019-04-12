@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import PropertiesBody from './PropertiesBody';
 import './Properties.css';
+import PropertyContainer from '../../com11/PropertyContainer';
 
 class Properties extends Component {
 
-    state={
-        open:true
-    }
 
-    handlePanel = () => {
-        this.setState({
-            open : !this.state.open
-        });
-    }
+
 
     render() {
+        const { tempData } = this.props;
         return( 
             <div className="properties">
                 <div className="properties-title" onClick={this.handlePanel} >
-                    {this.state.open? "▼" : "▶"} Properties Title
+                    <h1>Properties</h1>
                 </div>
                <div className="properties-body">
-                    {this.state.open && <PropertiesBody />}
+               {tempData.map(data => (
+                    <PropertyContainer jsonData={data} key={"a" + data.name}/>
+                ))}
+                  {/*   <PropertiesBody /> */}
                 </div>
         </div>
         )

@@ -1,5 +1,8 @@
 import React from 'react';
+import { Input } from 'reactstrap';
 import './OperationName.css';
+
+
 
 const OperationName = ({opNum, checked}) => {
     return (
@@ -8,11 +11,11 @@ const OperationName = ({opNum, checked}) => {
                     <label>Operation</label>
                 </div>
                 <div className="Operation Input">
-                    <input type="text" name={opNum} value={opNum}/>
+                    <Input type="text" name={opNum} defaultValue={opNum}/>
                 </div>
-                <div className="Operation Disabled">
+              {/*   <div className="Operation Disabled">
                     <p><input type="checkbox" name={opNum} checked={checked} id={opNum}/><label for={opNum}>Disabled</label></p>
-                </div>
+                </div> */}
             </div>
     )
 }
