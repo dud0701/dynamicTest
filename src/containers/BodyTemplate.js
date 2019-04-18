@@ -57,7 +57,7 @@ class BodyTemplate extends Component {
         
          {/*  <Advanced tempData={advancedDatas}/> */}
        
-         {/*  <Return /> */}
+          <Return />
         
 
         <div className="test">

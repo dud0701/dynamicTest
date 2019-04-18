@@ -64,8 +64,14 @@ selectData={
 }
 
  componentWillMount() {
-  const datas = TempData[0]["argoslabs.data.rdb"];
   //const datas = TempData[0]["argoslabs.api.rossum"];
+  const datas = TempData[0]["argoslabs.data.rdb"];
+  //const datas = TempData[0]["argoslabs.api.rest"];
+  //const datas = TempData[0]["argoslabs.data.excel"];
+  //const datas = TempData[0]["argoslabs.data.json"];
+  //const datas = TempData[0]["argoslabs.filesystem.monitor"];
+  //const datas = TempData[0]["argoslabs.filesystem.op"];
+  //const datas = TempData[0]["argoslabs.ai.tts"];
  // console.log(datas);
   this.setState({
     opRealData : datas

@@ -100,7 +100,7 @@ class DropBoxTable extends Component {
             <div className="dropdown_text">
               {!haveText ? "Select VariableName" : haveText}
             </div>
-            {itemList(data)}
+            {itemList(data.data)}
           </div>
             <div className="input">
                 <Button onClick={toggleWindowPortal}>?</Button>
