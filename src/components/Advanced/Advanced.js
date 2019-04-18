@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AdvancedBody from './AdvancedBody';
-import './Advanced.css';
 import PropertyContainer from '../../com11/PropertyContainer';
 
 class Advanced extends Component {
@@ -9,6 +8,15 @@ class Advanced extends Component {
         open:false
     }
 
+    componentWillMount() {
+
+        const { adData, mutIndex, mutData } = this.props; 
+
+        
+        
+    }
+    
+
     handlePanel = () => {
         this.setState({
             open : !this.state.open
@@ -16,19 +24,35 @@ class Advanced extends Component {
     }
 
     render() {
-        const { tempData } = this.props;
+        const { adData, mutIndex, mutData } = this.props;
         return( 
             <div className="advanced">
-                <div className="advanced-title" onClick={this.handlePanel}>
-                {this.state.open? "▼" : "▶"} Advanced Title
+                <div className="a dvanced-title" onClick={this.handlePanel}>
+                {this.state.open? "▼" : "▶"} Advanced 
                 </div>
                <div className="advanced-body">
-                    {this.state.open && 
-                         tempData.map(data => (
-                            <PropertyContainer jsonData={data} key={"a" + data.name}/>
+                     {this.state.open && 
+                         adData.map(data => (
+                             data.data.is_visible && !data.isMutData?
+                                <PropertyContainer jsonData={data} key={"a" + data.data.name}/> :
+                                null
                         ))
                         
-                    }
+                    } 
+{/* 
+                    {
+                        this.state.open && (
+                             test = adData.filter((data) => {
+                                return mutIndex.includes(data.name);
+                            }),
+
+                            test.map(data=> (
+                                
+                                <PropertyContainer jsonData={data} key={"a" + data.data.name}/> 
+                               
+                            ))
+                        )
+                    }  */} 
                 </div>
         </div>
         )

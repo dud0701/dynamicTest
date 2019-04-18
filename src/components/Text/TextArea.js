@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import './Text.css';
 
 const TextArea = (name, value) => {
     return (

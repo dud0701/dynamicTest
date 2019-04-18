@@ -3,14 +3,16 @@ import React, { Component } from "react";
 import { Input } from "reactstrap";
 
 
-const InputSelect = ({ options, name, disabled, onChange }) => {
+const InputSelect = ({ data/* options, name, disabled, onChange */ }) => {
+   // console.log(data.choices[0]);
   return (
-    <div className={"input select " + name}>
-      <Input type="select" disabled={disabled} name={name} onChange={onChange}>
-        {options.map(({ value, key = "op" + value }) => {
+    <div className={"input select " + data.name}>
+      <Input type="select" name={data.name} /* onChange={onChange} */ bsSize="sm">
+        {data.choices.map(( index ) => {
+          console.log(index);
           return (
-            <option value={value} key={key}>
-              {value}
+            <option value={index}>
+              {index}
             </option>
           );
         })}

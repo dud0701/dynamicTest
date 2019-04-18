@@ -1,68 +1,122 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './DropBoxTable.css';
-
+import { Button } from 'reactstrap';
+import Popup from '../Popup/Popup';
 
 class DropBoxTable extends Component {
 
-    state={
-        show:false
+    state = {
+        isOpen: false,
+        haveText: "",
+        showWindowPortal:false
+      
     }
 
-    handleChange = (font) => () => {
-        this.setState({ value: font, show: false });
-      }
-      
-      handleToggle = () => {
-        this.setState({ show: !this.state.show });
-      }
-      
-      handleBlur = (e) => {
-        if (this.state.show && !(this.input === e.target || this.list === e.target)) {
-         /*  timer = setTimeout(() => {
-            this.setState({ show: false });
-          }, 200); */
-        }
-      }
-      
-  
-      componentDidMount () {
-        document.addEventListener('mousedown', this.handleBlur);
+    componentDidMount() {
+        window.addEventListener('beforeunload', () => {
+          this.closeWindowPortal();
+        });
       }
 
-      componentWillUnmount () {
-        /* clearTimeout(timer); */
-        document.removeEventListener('mousedown', this.handleBlur);
+      toggleWindowPortal = () => {
+        this.setState(state => ({
+          ...state,
+          showWindowPortal: !state.showWindowPortal,
+        }));
       }
-      render () {
-        const { data } = this.props;
-        const {  handleBlur, handleToggle, handleChange } = this;
-        const { show } = this.state;
-        return(
-            <div className="dropdown-container">
-            <label className="arrow">
-              <input
-                type="button"
-                /* value={value} */
-                className="dropdown-btn"
-                /* style={{ fontFamily: value }} */
-                onClick={handleToggle}
-                ref={input => {this.input = input;}}
-              />
-            </label>
-            <ul className="dropdown-list" hidden={!show} ref={list => {this.list = list}}>
-              {data.map((dd) => (
-                <li
-                  className="option"
-                  /* onClick={handleChange(font)} */
-                >
-                  {dd.name}
-                </li>
-              ))}
-            </ul>
-          </div>
+
+      closeWindowPortal = () => {
+        this.setState({ showWindowPortal: false })
+      }
+      
+
+
+
+
+    handleClick = () => {
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
+      }
+
+      handleText = (name) => {
+        this.setState({ 
+          haveText: name
+        })
+      }
+
+      itemList = props => {
+        const list = props.map((item) => (
+          <div
+            onClick={(e) => this.handleText(item.VariableName)}
+            className="dropdown_item dd_row"
+            key={item.VariableName}>
+                <div className="IsArray left">
+                    {item.IsArray}
+                </div>
+                <div className="VariableName middle">
+                    {item.VariableName}
+                </div>
+                <div className="GroupName right">
+                    {item.GroupName}
+                </div>
+            </div>
+        ));
+    
+        return (
+        <div className="dropdown_items">
+            <div className="dd_container">
+            <div className="head dd_row">
+                <div className="left">
+                    IsArray
+                </div>
+                <div className="middle">
+                    VariableName
+                </div>
+                <div className="right">
+                    GroupName
+                </div>
+
+            </div>
+                { list } 
+            </div>
+         </div>
         )
       }
+  
+
+
+    render() {
+        const { isOpen, haveText, showWindowPortal } = this.state;
+        const { handleClick,itemList, closeWindowPortal, toggleWindowPortal } = this;
+        const { data } = this.props;
+
+        return (
+            <div className="input dropdwon">
+            <div
+            className={isOpen ? "dropdown active input" : "dropdown input"}
+            onClick={handleClick} >
+            <div className="dropdown_text">
+              {!haveText ? "Select VariableName" : haveText}
+            </div>
+            {itemList(data)}
+          </div>
+            <div className="input">
+                <Button onClick={toggleWindowPortal}>?</Button>
+                {showWindowPortal && (
+                              <Popup closeWindowPortal={closeWindowPortal}>
+                                <h1>What is the Array?</h1>
+                                <p>body</p>
+                            </Popup>
+                )}
+            </div>
+            
+
+  
+        </div>
+        )
+    }
 }
 
 

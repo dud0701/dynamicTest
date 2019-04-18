@@ -19,7 +19,7 @@ import './InputFile.css';
 
 class InputFile extends Component {
   state = {
-    fileName: "파일명을 입력 해 주세요.",
+    fileName: "파일명을 입력.",
   }
 
   handleFileName = (e) => {
@@ -30,15 +30,18 @@ class InputFile extends Component {
   render() {
     const { fileName } = this.state;
     const { handleFileName } = this; 
-    const { value, name, disabled, onChange } = this.props;
+    const { data, value, name, disabled, onChange } = this.props;
     return(
-      <div className={"input file " + name}>
-        <Input type="text" id="fileName" className="file_input_textbox" value={fileName}/>
+      <div className={"input file " + data.name}>
+      <div className="a">
+        <Input type="text" id="fileName" bsSize="sm" className="file_input_textbox" value={fileName}/>     
+        </div>
         <div className="file_input_div">
-          <Input type="button" value="..." className="file_input_button"/>
-          <Input type="file" className="file_input_hidden" id="text1" onChange={(e) => handleFileName(e)}/>
-        </div> 
+      <Input type="button" value="..." className="file_input_button" />     
+      <Input type="file" className="file_input_hidden" id="text1" onChange={(e) => handleFileName(e)} bsSize="sm"/>
+    </div> 
       </div>
+      
     )
   }
 }

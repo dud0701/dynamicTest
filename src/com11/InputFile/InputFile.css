@@ -1,5 +1,5 @@
 .file {
-    display: inline-block;
+   
 }
 
 .file_input_textbox {
@@ -11,6 +11,8 @@
     width: 75px;
     height: 25px;
     overflow: hidden;
+    float:right;
+    display:inline;
 }
 
 .file_input_hidden {
@@ -31,4 +33,16 @@
     position: absolute;
     top: 0px;
    /*  border-style: solid; */
+}
+
+.file_button {
+    display:inline;
+}
+
+.file_hidden {
+    display:inline;
+}
+ 
+.a {
+    display:inline;
 }

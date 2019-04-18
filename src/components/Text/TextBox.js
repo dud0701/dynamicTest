@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import './Text.css';
+
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap'; 
 /* 

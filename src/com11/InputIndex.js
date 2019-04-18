@@ -7,6 +7,7 @@ import InputNumber from './InputNumber/InputNumber';
 import InputSelect from './InputSelect/InputSelect'; 
 import InputText from './InputText/InputText'; 
 import DropBoxTable from './DropBoxTable/DropBoxTable'; 
+import InputMultiText from './InputMultiText/InputMultiText';
 
 
 export {
@@ -15,5 +16,6 @@ export {
     InputSelect,
     InputText,
     DropBoxTable,
+    InputMultiText,
 
 }

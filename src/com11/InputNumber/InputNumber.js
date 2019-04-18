@@ -5,6 +5,7 @@ import { Input } from "reactstrap";
 
 
 const InputNumber = ({
+  data,
   value,
   name,
   disabled,
@@ -13,16 +14,17 @@ const InputNumber = ({
   max_value
 }) => {
   return (
-    <div className={"input number " + name}>
+    <div className={"input number " + data.name}>
       <Input
         type="number"
         step="1"
-        min={min_value}
-        max={max_value}
+        min={data.min_value}
+        max={data.max_value}
         disabled={disabled}
-        name={name}
+        name={data.name}
         onChange={onChange}
-        value={value}
+        value={data.value}
+        bsSize="sm"
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import Select, {  components } from 'react-select';
 
-const Selectbox = ({ opType, onChangeTypeOp }) => {
+const Selectbox = ({ opType, onChange }) => {
     return (
-        <Select options={opType}/>
+        <Select options={opType} onChange={onChange} />
      
     )
 }

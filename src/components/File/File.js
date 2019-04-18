@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import './File.css';
 
 class File extends Component {
 
-    constructor(props){
-        super(props);
-        this.myRef = React.createRef();
-    }
+    
     state = {
         fileName: "파일을 선택 해 주세요.",
     

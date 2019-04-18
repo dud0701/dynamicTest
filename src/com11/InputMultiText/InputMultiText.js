@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import { Input } from "reactstrap";
 
-const InputText = ({ data, value, name, disabled, onChange }) => {
+const InputMultiText = ({ data, value, name, disabled, onChange }) => {
   return (
-    <div className={"input text " + data.name}>
+    <div className={"input multi_text " + data.name}>
       <Input
         disabled={disabled}
         name={data.name}
@@ -16,4 +16,4 @@ const InputText = ({ data, value, name, disabled, onChange }) => {
   );
 };
 
-export default InputText;
+export default InputMultiText;
